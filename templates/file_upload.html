@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech to Text</title>
+</head>
+<body bgcolor="#b8bdc4">
+<div align="center">
+    <h1>SPEECH TO TEXT</h1>
+    <hr><br>
+    
+    <form action = "/success" method = "post" enctype="multipart/form-data">
+        choose file/files: <br>
+        <input id="file" type="file" multiple="" name="file[]" /><br />
+        <input id="submit" type ="submit" value="Upload" >
+    </form>
+      <form method="get" action="/convert">
+      <input id="submit" type="submit" value="convert!">
+ <!--  
+    <form method="get" action="/convert">
+      <input id="submit" type="submit" value="convert!">
+    </form>
+    
+    <form action="/download" method = "get">
+        <p>Download your converted file here!</p>
+        <a id="submit" href="{{url_for( 'download_all')}}">DOWNLOAD</a>
+    </form>
+    
+    <script type="text/javascript" src="C:\Users\Areeba Shamsi\Desktop\fyp\Flask\static\file_upload.js"></script>
+-->
+</div>
+</body>
+</html>
