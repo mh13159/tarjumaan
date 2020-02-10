@@ -1,8 +1,29 @@
 <!DOCTYPE html>
-<html  >
+<html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  margin: -30px 0 0 73px;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
 
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +32,8 @@
   <link rel="shortcut icon" href="https://r.mobirisesite.com/50562/assets/images/logo2.png?v=1ILOGD" type="image/x-icon">
   <meta name="description" content="">
 
-  <title>Home</title>
+  <title>Tarjumaan</title>
+  
   <link rel="stylesheet" href="static/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap-grid.min.css">
@@ -23,23 +45,19 @@
   <link rel="stylesheet" href="static/assets/theme/css/style.css">
   <link rel="preload" as="style" href="static/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="static/assets/mobirise/css/mbr-additional.css" type="text/css">
 		  
- <!-- <script type="text/stylesheet" src="static/buttonstyle.css"></script>-->
   <script type="text/javascript" src="//code.jquery.com/jquery-1.4.3.min.js"></script>
   <script type="text/javascript" src="static/file_upload.js"></script> 
-  <script type="text/javascript" src="static/enable_convert.js"></script> 
   <script type="text/javascript" src="static/convert.js"></script>
   <script type="text/javascript" src="static/audiocheck.js"></script>
+  <script type="text/javascript" src="static/audiocheck_reload.js"></script>
   <script type="text/javascript" src="static/convert_enable.js"></script>
   <script type="text/javascript" src="static/convert_done.js"></script>
-
-
-    
+  <script type="text/javascript" src="static/upload.js"></script>
+  <script type="text/javascript" src="static/loader.js"></script>
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="static/upload.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://www.jqueryscript.net/demo/Easy-jQuery-Progress-Bar-Timer-Plugin-For-Bootstrap-3-progressTimer/js/jquery.progressTimer.js"></script>
-    
+  <script src="https://www.jqueryscript.net/demo/Easy-jQuery-Progress-Bar-Timer-Plugin-For-Bootstrap-3-progressTimer/js/jquery.progressTimer.js"></script>  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
       
@@ -60,7 +78,8 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-2" href="https://mobirise.com">OSARU</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-2" href="https://mobirise.com">ترجمان
+</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -149,7 +168,8 @@
                             </div>
                             <div class="card-text">
                                 <form action = "/success" method = "post" enctype="multipart/form-data" name='testform'>  
-                                    <input class="target1" id="submit" type="submit" value="upload" name="fileupload" disabled>
+                                    <input class="target1" id="submit" type="submit" value="upload" name="fileupload" onclick="load();" disabled>
+                                    <div class="loader" id="load" hidden></div>
                                 </form>
                                 <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4></a>                            
                             </div>
@@ -160,9 +180,8 @@
                             <img src = "static/assets/images/check.png" width="85" height="95" text-align="center" padding-right= ".5rem" padding-top= "90px">
                             <div class="card-text">
                                <form action="/audiocheck" method = "get" name='testform2'>
-                               <input class="audio" id="audiocheck" type="button" value="Quality Check" onclick="location.href='{{url_for('audiocheck')}}';" disabled>
-                                    {{result}}
-                                    <p id="paragraph"hidden>{{result}}</p>
+                               <input class="audio" id="audiocheck" type="button" value="Quality Check" onclick="location.href='{{url_for('audiocheck')}}';" onclick="getGoogle();" disabled>
+                                    <p id="paragraph">{{result}}</p>
                                 </form>
                                 <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4>      
                             </div>
@@ -176,8 +195,7 @@
                             </div>
                             <div class="card-text" method="get" action="/convert">
                                 <form method="get" action="/convert" name='testform3'>
-                                  <input class="convertfile" id="convert" type="submit" value="convert" onclick="setTimeout(myFunction, 60000)" disabled>
-                                  <p id = "demo"></p>
+                                  <input class="convertfile" id="convert" type="submit" value="convert" onclick="preview()" disabled>
                                 </form>
                                 <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4>
                             </div>
@@ -191,7 +209,7 @@
                             </div>
                             <div class="card-texts">
                                 <form action="/download" method = "get" name=testform4>
-                                    <input class="downloadfile" id="download" type="button" value="Download" onclick="location.href='{{url_for( 'download_all')}}';">
+                                    <input class="downloadfile" id="download" type="button" value="Download" onclick="location.href='{{url_for( 'download_all')}}';" disabled>
                                 </form>
                                 <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4>
                                 

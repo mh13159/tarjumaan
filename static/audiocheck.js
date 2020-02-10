@@ -22,10 +22,11 @@ $(function() {
 
         var file = $('#file');
         if (!isAudio(file.val())) {
-            return failValidation('🙁');
+            return failValidation('Your audio type is not supported by our system \n                                 🙁');
         }
         // success at this point
         // indicate success with alert for now
+        
         alert('You have selected the right audio type \n                                 🙂');
         document.getElementById("audiocheck").disabled = false;
         return false; // prevent form submitting anyway - remove this in your environment

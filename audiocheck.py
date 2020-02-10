@@ -8,9 +8,9 @@ import wave
 import mutagen.flac as flac
 import os
 
-def check(file):
+def check(file,parent_folder_path):
     
-    fl = os.path.join("D:\\Flask_20thjan\\static\\Files\\Audios\\1", file)
+    fl = os.path.join(parent_folder_path, file)
     
     if file.endswith('.flac'):
         f = flac.FLAC(fl).info
@@ -39,7 +39,7 @@ def audioCheck(input_files_folder):
     chunksdirlist.sort(key=lambda x: os.stat(os.path.join(chunksdir, x)).st_mtime)
     checklist = []
     for file in chunksdirlist:
-        checklist.append(check(file)) 
+        checklist.append(check(file,input_files_folder)) 
             
     return checklist
 
