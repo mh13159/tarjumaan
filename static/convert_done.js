@@ -8,5 +8,7 @@ document.getElementById("download").disabled = false;
  function preview(){
         setTimeout(function() { alert('Recognition Done\n                                  🙂'); }, 30000);
         setTimeout(function(){document.getElementById("download").disabled = false;},30000);
+        document.getElementById("load1").hidden = false;
+        setTimeout(function(){document.getElementById("load1").hidden = true;},30000);
 
 }

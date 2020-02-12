@@ -4,12 +4,15 @@ from flask import Flask
 from flask import send_file
 from flask import request
 from flask_caching import Cache
+from flask import Markup
 import os
 import zipfile
 cache = Cache()
 
+
 import audiocheck as au
 import recogniser as r
+from MyWordCloudGenerator import MyWordCloudGen as word
 
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
@@ -17,9 +20,10 @@ def ensure_dir(file_path):
         os.makedirs(directory)
 app=Flask(__name__)
 
-path="F:\\FinalSemester\\FYP_2_Deploymenty\\New folder\\project_updated_6thFeb\\static\\Files\\Audios"
-path1="F:\\FinalSemester\\FYP_2_Deploymenty\\New folder\\project_updated_6thFeb\\static\\Files\\Results"
-path2="F:\\FinalSemester\\FYP_2_Deploymenty\\New folder\\project_updated_6thFeb\\static\\Files"
+path=os.getcwd()+"\\static\\Files\\Audios"
+path1=os.getcwd()+"\\static\\Files\\Results"
+path2=os.getcwd()+"\\static\\Files"
+imgpath = os.getcwd()+"\\static\\assets\\images"
 
 app.config['UPLOAD_PATH']=path
 
@@ -75,6 +79,11 @@ def download_all():
             attachment_filename= 'Result.zip',
             as_attachment = True)
 
+@app.route("/wordcloud" ,methods=['POST','GET'])
+def wordcloud():
+    print("agaya wordcloud")    
+    result = word(imgpath,path1)
+    return render_template("backup_index1.html", result=result)
 
 @app.after_request
 def add_header(response):

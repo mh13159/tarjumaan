@@ -28,7 +28,9 @@ $(function() {
         // indicate success with alert for now
         
         alert('You have selected the right audio type \n                                 🙂');
-        document.getElementById("audiocheck").disabled = false;
+        setTimeout(function(){document.getElementById("audiocheck").disabled = false;},3000);
+
+        //document.getElementById("audiocheck").disabled = false;
         return false; // prevent form submitting anyway - remove this in your environment
     });
 

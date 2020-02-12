@@ -1,20 +1,21 @@
-.myLabel {
-    border: 2px solid #AAA;
-    border-radius: 4px;
-    padding: 2px 5px;
-    margin: 2px;
-    background: #DDD;
-    display: inline-block;
+#one {
+    position:relative;
+    padding:0 0 0 20px;
+    margin:0 20px;
+    background:#ddd;
+    direction: rtl;
+    width: 200px;
 }
-.myLabel:hover {
-    background: #CCC;
+#file {
+    height:30px;
+    margin:0;
+    padding-right: 58px;
+    width: 87px;
 }
-.myLabel:active {
-    background: #CCF;
-}
-.myLabel :invalid + span {
-    color: #A44;
-}
-.myLabel :valid + span {
-    color: #4A4;
+#two {
+    position:relative;
+    bottom:2px;
+    left:183px;
+    width:24px;
+    height:23px;
 }
