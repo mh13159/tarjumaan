@@ -18,7 +18,7 @@ from urduhack import stop_words,normalization
 from flask import Markup
 import os
 
-def MyWordCloudGen(imgpath,scriptpath):
+def MyWordCloudGen(imgpath,scriptpath,os):
     
    # d = "F:\\Current Semester\\FYP\\OASRU_CLEN\\OASRU\\ResultScripts"
     configuration = {
@@ -27,7 +27,12 @@ def MyWordCloudGen(imgpath,scriptpath):
         'RIAL SIGN': True,  # Replace ر ي ا ل with ﷼
     }
     reshaper = ArabicReshaper(configuration=configuration)
-    text_to_be_reshaped = open(path.join(scriptpath, 'CapitalTalkSegmented_audio_1 Saal Main PTI Hukumat Ne Konsi Bari Kamiyabi Hasil Ki.wav.doc'),encoding="UTF-8").read()
+    scripts  = os.listdir(scriptpath)
+    scripts.sort(key=lambda x: os.stat(os.path.join(scriptpath, x)).st_mtime)
+    print((scripts))
+    
+    text_to_be_reshaped = open(path.join(scriptpath, scripts[1]),encoding="UTF-8").read()
+    print(text_to_be_reshaped)
     text_to_be_reshaped = normalize(text_to_be_reshaped)
     text_to_be_reshaped = normalization.normalize_characters(text_to_be_reshaped)
     text_to_be_reshaped = normalization.normalize_combine_characters(text_to_be_reshaped)
@@ -75,7 +80,7 @@ def MyWordCloudGen(imgpath,scriptpath):
 
 
 def main():
-    path = MyWordCloudGen(os.getcwd()+"\\static\\assets\\images",os.getcwd()+"\\static\\Files\\Results")
+    path = MyWordCloudGen(os.getcwd()+"\\static\\assets\\images",os.getcwd()+"\\static\\Files\\Results",os)
     print(path.replace("\\","/"))
     
 if __name__=="__main__":

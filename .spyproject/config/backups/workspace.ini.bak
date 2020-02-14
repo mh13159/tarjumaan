@@ -6,5 +6,5 @@ save_non_project_files = False
 
 [main]
 version = 0.2.0
-recent_files = ['app1.py', 'templates\\backup_index1.html', 'static\\uploadstyle.css', 'static\\convertstyle.css', 'MyWordCloudGenerator.py']
+recent_files = ['app1.py', 'MyWordCloudGenerator.py', 'static\\convert_enable.js', 'static\\loader.js', 'templates\\backup_index1.html', 'recogniser.py', '..\\..\\..\\..\\ProgramData\\Anaconda3\\envs\\heuristics\\lib\\os.py']
 

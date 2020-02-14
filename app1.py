@@ -21,7 +21,8 @@ def ensure_dir(file_path):
 app=Flask(__name__)
 
 path=os.getcwd()+"\\static\\Files\\Audios"
-path1=os.getcwd()+"\\static\\Files\\Results"
+path1=os.getcwd()+"\\static\\Files\\Results\\"
+
 path2=os.getcwd()+"\\static\\Files"
 imgpath = os.getcwd()+"\\static\\assets\\images"
 
@@ -29,14 +30,17 @@ app.config['UPLOAD_PATH']=path
 
 @app.route("/")
 def getstarted(methods=['POST','GET']):
+    print("HOME PAGE")
     return render_template("backup_index1.html")
 
 @app.route("/upload")
 def upload():
+    print("UPLOAD CALLED")
     return render_template("backup_index1.html")
 
 @app.route('/success', methods=['POST'])
 def success():
+    print("SUCCESS CALLED")
     uploaded_files = request.files.getlist("file[]")
     filenames = [] 
     i=1
@@ -54,6 +58,7 @@ def success():
 
 @app.route("/audiocheck" ,methods=['POST','GET'])
 def audiocheck():
+    print("Audio Check CALLED")
     i=1
     d = path+"\\"+str(i)
     if ((len(os.listdir(path))>1)):
@@ -63,6 +68,7 @@ def audiocheck():
 
 @app.route("/convert", methods=['GET','POST'])
 def convert():
+    print("RECOGNIZER CALLED")
     r.Recognizer(path,path1)
     return render_template("backup_index1.html")
 
@@ -70,9 +76,10 @@ def convert():
 @app.route('/download_all',methods=['GET'])
 def download_all():
     zipf = zipfile.ZipFile('Result.zip','w', zipfile.ZIP_DEFLATED)
-    for file in os.listdir(path2):
+    for file in os.listdir(path1):
         if file.endswith(".doc"):
-            zipf.write(path2+'//'+file)
+            #zipf.write(path2+'//'+file)
+            zipf.write(path1+file)
     zipf.close()
     return send_file('Result.zip',
             mimetype = 'zip',
@@ -82,7 +89,7 @@ def download_all():
 @app.route("/wordcloud" ,methods=['POST','GET'])
 def wordcloud():
     print("agaya wordcloud")    
-    result = word(imgpath,path1)
+    result = word(imgpath,path1,os)
     return render_template("backup_index1.html", result=result)
 
 @app.after_request

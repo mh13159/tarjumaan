@@ -1,69 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-#arrowplus{
-    margin-left: 327px;
-}
-#arrowplus1{
-    margin-left: 327px;
-}
-#arrowplus2{
-    margin-left: 327px;
-    margin: 32px 325px 1px 326px;
-}
-#arrowplus3{
-    margin-left: 327px;
-}
-.eleven {
-    height: 382px;
-    width: 561px;
-    float: right;
-    margin: -386px 240px 0 0;
-    border-radius: 22px;
-    border-style: outset;
-    border-width: revert;
-    border-color: #41597D;
-}
-.lolz{
-    height: 50px;
-    width: 50px;
-    float: left;
-    align: middle;
-}
 
-.loader {
-  border: 14px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  margin: -40px 0 0 -98px;
-  width: 20px;
-  height: 20px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
-.loader1 {
-  border: 14px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  margin: -40px 0 0 -200px;
-  width: 20px;
-  height: 20px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
-
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Mobirise v4.11.6, mobirise.com">
@@ -72,13 +10,6 @@
   <meta name="description" content="">
 
   <title>Tarjumaan</title>
-  
-  <link rel="stylesheet" href="static/buttonstyle.css">
-  <link rel="stylesheet" href="static/uploadstyle.css">
-  <link rel="stylesheet" href="static/checkstyle.css">
-  <link rel="stylesheet" href="static/convertstyle.css">
-  <link rel="stylesheet" href="static/downloadstyle.css">
-
   
   <link rel="stylesheet" href="static/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css">
@@ -99,7 +30,6 @@
   <script type="text/javascript" src="static/convert_enable.js"></script>
   <script type="text/javascript" src="static/convert_done.js"></script>
   <script type="text/javascript" src="static/upload.js"></script>
-  <script type="text/javascript" src="static/loader.js"></script>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -175,68 +105,96 @@
 
 <section class="counters2 counters cid-rIU2KeH3le" id="counters2-q">
 
-  
- 
-                            <div class="one" align="left">
-                                <form action = "/success" method = "post" enctype="multipart/form-data" name='testform1' align="left" style="margin:2px 600px">
-                                    <label class="myLabel" align="left">
-                                    <input class="target" id="file" type="file" multiple="" name="file[]" value="browse" align="left" style="margin:0px -300px; border-width:thick;" width="110" height="110"/>
-                                    <img src="static/assets/images/browse.png" id="two">
-                                    </label>
-                                </form>
-                            </div>
-                            <div align="left" >
-                            <img src = "static/assets/images/arrow.jpg" width="25" height="35" id="arrowplus">
-                            </div>
-                            <div class="three" align="left">
-                                <form action = "/success" method = "post" enctype="multipart/form-data" name='testform' align="left" style="margin:3px 500px">  
-                                    <label class="myLabel1" align="left">
-                                    <input class="target1" id="submit" type="submit" value="upload" name="fileupload" onclick="load();" disabled align="left" style="margin:0px -202px;border-width:thick;" width="110" height="110">
-                                    <img src="static/assets/images/upload1.png" id="four">                                    
-                                    <div class="loader" id="load" align="left" hidden></div>
-                                    </label>
-                                </form>   
-                            </div>
-                            <div align="left">
-                            <img src = "static/assets/images/arrow.jpg" width="25" height="35" id="arrowplus1" >
-                            </div>
-                            
-                            <div class="five" align="left">
-                               <form action="/audiocheck" method = "get" name='testform2' style="margin:3px 600px" align="left">
-                                   <input class="audio" id="audiocheck" type="button" value="Quality Check" onclick="location.href='{{url_for('audiocheck')}}';" disabled align="left" style="margin:0px -318px;border-width:thick;" width="110" height="110">
-                                   <img src="static/assets/images/audiocheck.png" id="six">
-                                   <p id="paragraph" align="left" style="margin: -30px -50px -3px -179px;">{{result}}</p>
-                                </form>
-                            </div>
-                            <div align="left">
-                                <img src = "static/assets/images/arrow.jpg" width="25" height="35" id="arrowplus2">
-                            </div>
-                            <div class="seven" align="left">
-                                <form method="get" action="/convert" name='testform3' style="margin:3px 600px" align="left">
-                                  <input class="convertfile" id="convert" type="submit" value="convert" onclick="preview()" disabled align="left" style="margin:0px -306px;border-width:thick;" width="110" height="110">
-                                  <img src="static/assets/images/convert.png" id="eight">
-                                  <div class="loader1" id="load1" align="left" hidden></div>
-                                </form>
-                            </div>
-                            <div align="left">
-                                <img src = "static/assets/images/arrow.jpg" width="25" height="35" id="arrowplus3">
-                            </div>
-                            <div class="nine" align="left">
-                                <form action="/download" method = "get" name=testform4 style="margin:3px 600px" align="left">
-                                    <input class="downloadfile" id="download" type="button" value="Download" onclick="location.href='{{url_for( 'download_all')}}';" disabled align="left" style="margin:0px -308px; border-width:thick;" width="110" height="110" >
-                                   <img src="static/assets/images/download.png" id="ten">
-                                </form>
-                            </div>
-                            <div class="eleven" align="right">
-                            <form action="/wordcloud" method = "get" name='testform5'>
-                               <input class="word" id="wordcloud" type="button" value="Word Cloud" onclick="location.href='{{url_for('wordcloud')}}';"  align="left" width="125" height="75" style="margin:14px 318px 0 0; border-width:thick;">
-                              <!-- <img src="" id="six">-->
-                            </form>
-                            <div class="lolz" align="middle" text-align="center" margin= "10px auto 20px" vertical-align="middle">
-                            <img src={{result}} height="305px" width="305px" align="middle" vertical-align="middle" text-align="center"  style="margin:17px 127px 25px;"></img>
-                            </div>    
-                            </div>
+    
 
+    
+
+    <div class="container pt-4 mt-2">
+        <div class="media-container-row">
+            <div class="media-block" style="width: 36%;">
+                
+                
+                <div class="mbr-figure">
+                    <img src="static/assets/images/capture-144x129.png" alt="" title="">
+                </div>
+            </div>
+            <div class="cards-block">
+                <div class="cards-container">
+                    <div class="card px-3 align-left col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbr-iconfont pr-2 mbri-search" style="font-size: 85px;"></span>
+                                <h3 class="count py-3 mbr-fonts-style display-2">hfh</h3>
+                            </div>
+                            <div class="card-text">
+                                <form action = "/success" method = "post" enctype="multipart/form-data" name='testform1'>
+                                    <label class="myLabel">
+                                    <input class="target" id="file" type="file" multiple="" name="file[]" value="browse" /><br />
+                                    </label>
+                                </form>
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card px-3 align-left col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbr-iconfont pr-2 mbri-upload" style="font-size: 85px;"></span>
+                                <h3 class="count py-3 mbr-fonts-style display-2"></h3>
+                            </div>
+                            <div class="card-text">
+                                <form action = "/success" method = "post" enctype="multipart/form-data" name='testform'>  
+                                    <input class="target1" id="submit" type="submit" value="upload" name="fileupload" disabled>
+                                </form>
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4></a>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card px-3 align-left col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <img src = "static/assets/images/check.png" width="85" height="95" text-align="center" padding-right= ".5rem" padding-top= "90px">
+                            <div class="card-text">
+                               <form action="/audiocheck" method = "get" name='testform2'>
+                               <input class="audio" id="audiocheck" type="button" value="Quality Check" onclick="location.href='{{url_for('audiocheck')}}';" onclick="getGoogle();" disabled>
+                                    <p id="paragraph">{{result}}</p>
+                                </form>
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4>      
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card px-3 align-left col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbr-iconfont pr-2 mbri-update" style="font-size: 85px;"></span>
+                                <h3 class="count py-3 mbr-fonts-style display-2"></h3>
+                            </div>
+                            <div class="card-text" method="get" action="/convert">
+                                <form method="get" action="/convert" name='testform3'>
+                                  <input class="convertfile" id="convert" type="submit" value="convert" onclick="preview()" disabled>
+                                </form>
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card px-3 align-left col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbr-iconfont pr-2 mbri-download" style="font-size: 85px;"></span>
+                                <h3 class="count py-3 mbr-fonts-style display-2"></h3>
+                            </div>
+                            <div class="card-texts">
+                                <form action="/download" method = "get" name=testform4>
+                                    <input class="downloadfile" id="download" type="button" value="Download" onclick="location.href='{{url_for( 'download_all')}}';" disabled>
+                                </form>
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7"></h4>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="team1 cid-rIUiDIiXMi" id="team1-s">
