@@ -1,12 +1,13 @@
-# Flask-Pdf-Splitter-
-Build and deploy a python flask application to split pdfs
-
-Demo : https://pdfsplitter.pythonanywhere.com/
+# Tarjumaan
+> Python Flask Urdu Speech and Text Analytics
 
 # Installation
-> pip install flask
+>  pip install -r requirements.txt
 
-> pip install PyPdf2
+# Starting Tarjumaan App
+> Run main.py
 
-# What does it do?
-It extracts pages from a pdf and creates a new pdf of the extracted pages. 
+# Browser Access
+
+> localhost:5000
+
