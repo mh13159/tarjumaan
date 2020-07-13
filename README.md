@@ -5,7 +5,7 @@
 >  pip install -r requirements.txt
 
 # Starting Tarjumaan App
-> Run main.py
+> Run app1.py
 
 # Browser Access
 
